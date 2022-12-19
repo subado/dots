@@ -1,0 +1,3 @@
+#!/bin/sh
+
+notes.sh planner $1

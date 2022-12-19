@@ -1,0 +1,2 @@
+#!/bin/sh
+import ${HOME}/pictures/Screenshots/screenshot-$(date +"%d.%m.%y-%H:%M:%S").png
