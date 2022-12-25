@@ -9,53 +9,36 @@ colors = []
 for i in stock['colors']:
     colors.append(stock['colors'][i])
 
-norm_fg = ["dwm.normfgcolor: ", "dwm.titlenormfgcolor: ", "dwm.tagsnormfgcolor: ", "dwm.urgfgcolor: "]
 
-norm_bg = ["dwm.normbgcolor: ", "dwm.titlenormbgcolor: ", "dwm.tagsnormbgcolor: ", "dwm.hidnormbgcolor: ", "dwm.hidselbgcolor: ", "dwm.urgbgcolor: "]
+def set_color(names: list, color_id: int):
+    for i in names:
+        end_list.append(i + ": " + str(colors[color_id]))
 
-norm_border = ["dwm.normbordercolor: ", "dwm.titlenormbordercolor: ", "dwm.tagsnormbordercolor: "]
 
-norm_float = ["dwm.normfloatcolor: ", "dwm.titlenormfloatcolor: ", "dwm.tagsnormfloatcolor: ", "dwm.urgfloatcolor: "]
+norm_fg = ["dwm.normfgcolor", "dwm.titlenormfgcolor", "dwm.tagsnormfgcolor", "dwm.urgfgcolor", "dmenu.foreground", "dmenu.outforeground"]
 
-sel_fg = ["dwm.selfgcolor: ", "dwm.titleselfgcolor: ", "dwm.tagsselfgcolor: "]
+norm_bg = ["dwm.normbgcolor", "dwm.titlenormbgcolor", "dwm.tagsnormbgcolor", "dwm.hidnormbgcolor", "dwm.hidselbgcolor", "dwm.urgbgcolor", "dmenu.background", "dmenu.outbackground"]
 
-sel_bg = ["dwm.selbgcolor: ", "dwm.selbordercolor: ", "dwm.selfloatcolor: ", "dwm.titleselbgcolor: ", "dwm.titleselbordercolor: ", "dwm.titleselfloatcolor: ", "dwm.tagsselbgcolor: ", "dwm.tagsselbordercolor: ", "dwm.tagsselfloatcolor: ", "dwm.hidnormfgcolor: "]
+norm_border = ["dwm.normbordercolor", "dwm.titlenormbordercolor", "dwm.tagsnormbordercolor"]
 
-hidsel_fg = ["dwm.hidselfgcolor: "]
+norm_float = ["dwm.normfloatcolor", "dwm.titlenormfloatcolor", "dwm.tagsnormfloatcolor", "dwm.urgfloatcolor"]
 
-urg_border = ["dwm.urgbordercolor: "]
+sel_fg = ["dwm.selfgcolor", "dwm.titleselfgcolor", "dwm.tagsselfgcolor"]
 
-for color in norm_fg:
-    string = str(color) + str(colors[7])
-    end_list.append(string)
+sel_bg = ["dwm.selbgcolor", "dwm.selbordercolor", "dwm.selfloatcolor", "dwm.titleselbgcolor", "dwm.titleselbordercolor", "dwm.titleselfloatcolor", "dwm.tagsselbgcolor", "dwm.tagsselbordercolor", "dwm.tagsselfloatcolor", "dwm.hidnormfgcolor", "dmenu.selbackground"]
 
-for color in norm_bg:
-    string = str(color) + str(color[0])
-    end_list.append(string)
+hidsel_fg = ["dwm.hidselfgcolor"]
 
-for color in norm_border:
-    string = str(color) + str(color[8])
-    end_list.append(string)
+urg_border = ["dwm.urgbordercolor"]
 
-for color in norm_float:
-    string = str(color) + str(colors[13])
-    end_list.append(string)
-
-for color in urg_border:
-    string = str(color) + str(colors[9])
-    end_list.append(string)
-
-for color in sel_fg:
-    string = str(color) + str(colors[15])
-    end_list.append(string)
-
-for color in sel_bg:
-    string = str(color) + str(colors[2])
-    end_list.append(string)
-
-for color in hidsel_fg:
-    string = str(color) + str(colors[10])
-    end_list.append(string)
+set_color(norm_fg, 7)
+set_color(norm_bg, 0)
+set_color(norm_border, 8)
+set_color(norm_float, 13)
+set_color(urg_border, 9)
+set_color(sel_fg, 15)
+set_color(sel_bg, 2)
+set_color(hidsel_fg, 10)
 
 file = open("/home/subado/.Xresources", "w")
 
