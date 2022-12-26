@@ -1,18 +1,18 @@
 import json
 
-end_list = []
+final_list = []
 
-with open('/home/subado/.cache/wal/colors.json') as file:
-    stock = json.load(file)
+with open('/home/subado/.cache/wal/colors.json', "r") as file:
+    data = json.load(file)
 
 colors = []
-for i in stock['colors']:
-    colors.append(stock['colors'][i])
+for i in data['colors']:
+    colors.append(data['colors'][i])
 
 
 def set_color(names: list, color_id: int):
     for i in names:
-        end_list.append(i + ": " + str(colors[color_id]))
+        final_list.append(i + ": " + str(colors[color_id]))
 
 
 norm_fg = ["dwm.normfgcolor", "dwm.titlenormfgcolor", "dwm.tagsnormfgcolor", "dwm.urgfgcolor", "dmenu.foreground", "dmenu.outforeground"]
@@ -42,8 +42,7 @@ set_color(hidsel_fg, 10)
 
 file = open("/home/subado/.Xresources", "w")
 
-for end_str in end_list:
-
-    file.write(str(end_str) + '\n')
+for i in final_list:
+    file.write(i + '\n')
 
 file.close()
