@@ -22,5 +22,5 @@ else
 fi
 
 
-dunstify -t 1000 -r 6 -h int:value:$vol "$icon"
+notify-send -t 1000 -r 6 -h int:value:$vol "$icon"
 pkill -RTMIN+6 dwmblocks
