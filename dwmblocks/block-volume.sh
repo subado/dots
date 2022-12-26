@@ -1,7 +1,8 @@
 #!/bin/bash
 
 case $BUTTON in
-	1) pamixer -t
+	1) pamixer -t ;;
+	2) pavucontrol & ;;
 esac
 
 if [[ $(pamixer --get-mute) == true ]]; then
