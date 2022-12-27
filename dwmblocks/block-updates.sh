@@ -15,6 +15,6 @@ case $BUTTON in
 		;;
 esac
 icon="📦"
-updatesNum="$(echo -n $updates | wc -l)"
+updatesNum="$(echo "$updates" | wc -l)"
 
 echo "$icon$updatesNum"
