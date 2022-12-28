@@ -20,7 +20,7 @@ with open(filename, 'wb') as fd:
 
 text = read_file(filename)
 
-soup = BeautifulSoup(text)
+soup = BeautifulSoup(text, "lxml")
 table = soup.find('table', attrs={'class': 'wikitable collapsible uncollapsed nounderlines'})
 table_body = table.find('tbody')
 
