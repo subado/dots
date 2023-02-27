@@ -1,0 +1,2 @@
+#include ".Xresources.d/vscode-dark"
+#include ".Xresources.d/dwm"
