@@ -1,0 +1,63 @@
+xkb_keymap {
+	xkb_keycodes  { include "evdev+aliases(qwerty)" };
+	xkb_types	 { include "complete" };
+	xkb_compat	{ include "complete" };
+	xkb_geometry  { include "pc(pc105)" };
+
+	xkb_symbols "my" {
+		include "pc+us+ru:2+inet(evdev)"
+
+		name[group1]="English (US)";
+		name[group2]="Russian";
+
+		key <RALT> {
+			[ ISO_Next_Group ]
+		};
+
+		key <CAPS> {
+			[ ISO_Level3_Shift ]
+		};
+
+		key <AC06> {
+			symbols[group1] = [ h, H, Left ],
+		 	symbols[group2] = [ Cyrillic_er, Cyrillic_ER, Left ]
+		};
+
+		key <AC07> {
+			symbols[group1] = [ j, J, Down ],
+		 	symbols[group2] = [ Cyrillic_o, Cyrillic_O, Down ]
+		};
+
+		key <AC08> {
+			symbols[group1] = [ k, K, Up ],
+		 	symbols[group2] = [ Cyrillic_el, Cyrillic_EL, Up ]
+		};
+
+		key <AC09> {
+			symbols[group1] = [ l, L, Right ],
+		 	symbols[group2] = [ Cyrillic_de, Cyrillic_DE, Right ]
+		};
+
+		key <SPCE> {
+			[ space, space, BackSpace, BackSpace ]
+		};
+
+		key <AC10> {
+			[ colon, semicolon ]
+		};
+
+		key <AE04> {
+			symbols[group1] = [ 4, dollar, End ],
+			symbols[group2] = [ 4, semicolon, End ]
+		};
+
+		key <AE10> {
+			symbols[group1] = [ 0, parenright, Home ],
+			symbols[group2] = [ 0, parenright, Home ]
+		};
+
+		key <TLDE> {
+			[ asciitilde, grave ]
+		};
+	};
+};
