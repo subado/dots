@@ -1,43 +1,43 @@
-dwm.normfgcolor:		FOREGROUND
-dwm.titlenormfgcolor:	FOREGROUND
-dwm.tagsnormfgcolor:	FOREGROUND
-dwm.urgfgcolor:			FOREGROUND
-dmenu.foreground:		FOREGROUND
-dmenu.outforeground:	FOREGROUND
+dwm.normfgcolor:      FOREGROUND
+dwm.titlenormfgcolor: FOREGROUND
+dwm.tagsnormfgcolor:  FOREGROUND
+dwm.urgfgcolor:       FOREGROUND
+dmenu.foreground:     FOREGROUND
+dmenu.outforeground:  FOREGROUND
 
-dwm.normbgcolor:		BACKGROUND
-dwm.titlenormbgcolor:	BACKGROUND
-dwm.tagsnormbgcolor:	BACKGROUND
-dwm.hidnormbgcolor:		BACKGROUND
-dwm.hidselbgcolor:		BACKGROUND
-dwm.urgbgcolor:			BACKGROUND
-dmenu.background:		BACKGROUND
-dmenu.outbackground:	BACKGROUND
+dwm.normbgcolor:      BACKGROUND
+dwm.titlenormbgcolor: BACKGROUND
+dwm.tagsnormbgcolor:  BACKGROUND
+dwm.hidnormbgcolor:   BACKGROUND
+dwm.hidselbgcolor:    BACKGROUND
+dwm.urgbgcolor:       BACKGROUND
+dmenu.background:     BACKGROUND
+dmenu.outbackground:  BACKGROUND
 
-dwm.normbordercolor:		COLOR8
-dwm.titlenormbordercolor:	COLOR8
-dwm.tagsnormbordercolor:	COLOR8
+dwm.selfgcolor:       CURSOR
+dwm.titleselfgcolor:  CURSOR
+dwm.tagsselfgcolor:   CURSOR
 
-dwm.normfloatcolor:			COLOR5
-dwm.titlenormfloatcolor:	COLOR5
-dwm.tagsnormfloatcolor:		COLOR5
-dwm.urgfloatcolor:			COLOR5
+dwm.normbordercolor:     COLOR8
+dwm.titlenormbordercolor:COLOR8
+dwm.tagsnormbordercolor: COLOR8
 
-dwm.selfgcolor:			CURSOR
-dwm.titleselfgcolor:	CURSOR
-dwm.tagsselfgcolor:		CURSOR
+dwm.normfloatcolor:      COLOR5
+dwm.titlenormfloatcolor: COLOR5
+dwm.tagsnormfloatcolor:  COLOR5
+dwm.urgfloatcolor:       COLOR5
 
-dwm.selbgcolor:			COLOR4
-dwm.selbordercolor:		COLOR4
-dwm.selfloatcolor:		COLOR4
-dwm.titleselbgcolor:	COLOR4
-dwm.titleselbordercolor:COLOR4
-dwm.titleselfloatcolor:	COLOR4
-dwm.tagsselbgcolor:		COLOR4
-dwm.tagsselbordercolor:	COLOR4
-dwm.tagsselfloatcolor:	COLOR4
-dwm.hidnormfgcolor:		COLOR4
-dmenu.selbackground:	COLOR4
+dwm.selbgcolor:          COLOR4
+dwm.selbordercolor:      COLOR4
+dwm.selfloatcolor:       COLOR4
+dwm.titleselbgcolor:     COLOR4
+dwm.titleselbordercolor: COLOR4
+dwm.titleselfloatcolor:  COLOR4
+dwm.tagsselbgcolor:      COLOR4
+dwm.tagsselbordercolor:  COLOR4
+dwm.tagsselfloatcolor:   COLOR4
+dwm.hidnormfgcolor:      COLOR4
+dmenu.selbackground:     COLOR4
 
-dwm.hidselfgcolor:	COLOR10
-dwm.urgbordercolor:	COLOR9
+dwm.hidselfgcolor:       COLOR10
+dwm.urgbordercolor:      COLOR9
