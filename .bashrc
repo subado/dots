@@ -49,6 +49,7 @@ export TERMINAL="st"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/scripts/dwmblocks"
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
 # Set dirs for my diary and planner shells
 export DIARY_DIR="$HOME/notes/diary"
