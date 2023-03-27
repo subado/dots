@@ -3,6 +3,6 @@
 case $BUTTON in
 esac
 
-weather=$(curl -s wttr.in/Sarapul?format=%c%t+%m)
+weather=$(curl --max-time 60 -s wttr.in/Sarapul?format=%c%t+%m)
 
 echo "$weather"
