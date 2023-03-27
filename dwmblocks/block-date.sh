@@ -1,6 +1,7 @@
 #!/bin/bash
 
 case $BUTTON in
+  1) notify-send "$(cal)" ;;
 esac
 
 now="$(date '+%b %d (%a) %R')"
