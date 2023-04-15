@@ -1,0 +1,21 @@
+! Nightfox colors for Xresources
+! Style carbonfox
+! Upstream https://github.com/edeneast/nightfox.nvim/raw/main/extra/carbonfox/nightfox_xresources.Xresources
+#define BACKGROUND #161616
+#define FOREGROUND #F2F4F8
+#define COLOR0  #282828
+#define COLOR1  #EE5396
+#define COLOR2  #25BE6A
+#define COLOR3  #08BDBA
+#define COLOR4  #78A9FF
+#define COLOR5  #BE95FF
+#define COLOR6  #33B1FF
+#define COLOR7  #DFDFE0
+#define COLOR8  #484848
+#define COLOR9  #F16DA6
+#define COLOR10 #46C880
+#define COLOR11 #2DC7C4
+#define COLOR12 #8CB6FF
+#define COLOR13 #C8A5FF
+#define COLOR14 #52BDFF
+#define COLOR15 #E4E4E5

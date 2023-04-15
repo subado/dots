@@ -1,2 +1,3 @@
-#include ".Xresources.d/vscode-dark"
+#include ".Xresources.d/mocha"
+#include ".Xresources.d/colors"
 #include ".Xresources.d/dwm"
