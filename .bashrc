@@ -55,7 +55,7 @@ export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export DIARY_DIR="$HOME/notes/diary"
 export PLANNER_DIR="$HOME/notes/planner"
 
-# Google test framwork output colorful
+# Google test framework output colorful
 export GTEST_COLOR=1
 
 # Enable starship
