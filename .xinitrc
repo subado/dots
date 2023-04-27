@@ -5,8 +5,7 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-xkbcomp $HOME/.config/xkb/my $DISPLAY >/dev/null 2>&1
-xcape -t 500 -e "ISO_Level3_Shift=Escape"
+eval xkeyboard-setup.sh
 nitrogen --set-scaled $HOME/pictures/wallpapers/coder-room.jpg >/dev/null 2>&1
 picom -b >/dev/null 2>&1
 
@@ -38,7 +37,7 @@ fi
 
 if [ "$(command -v dwm)" >/dev/null 2>&1 ];
 then
-	dwmblocks & 
+	dwmblocks &
 	exec dwm
 fi
 
