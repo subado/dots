@@ -18,7 +18,7 @@ padding = 8
 horizontal_padding = 8
 text_icon_padding = 0
 frame_width = 1
-frame_color = "#585B70"
+frame_color = "#808080"
 gap_size = 0
 separator_color = frame
 sort = yes
@@ -59,21 +59,21 @@ mouse_right_click = close_all
 per_monitor_dpi = false
 
 [urgency_low]
-background = "#1E1E2E"
-foreground = "#A6ADC8"
+background = "#1e1e1e"
+foreground = "#d4d4d4"
 timeout = 10
-highlight = "#A6E3A1"
+highlight = "#608b4e"
 
 [urgency_normal]
-background = "#1E1E2E"
-foreground = "#CDD6F4"
+background = "#1e1e1e"
+foreground = "#d4d4d4"
 timeout = 10
-highlight = "#89B4FA"
+highlight = "#569cd6"
 
 [urgency_critical]
-background = "#1E1E2E"
-foreground = "#F38BA8"
+background = "#1e1e1e"
+foreground = "#f44747"
 frame_color = "#ff0000"
 timeout = 0
-highlight = "#F38BA8"
+highlight = "#f44747"
 
