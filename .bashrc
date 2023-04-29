@@ -30,11 +30,6 @@ alias reboot='sudo reboot'
 alias shutdown='sudo shutdown'
 alias config='/usr/bin/git --git-dir=/home/subado/.cfg/.git/ --work-tree=/home/subado'
 
-# cmake
-alias cmake-debug="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug -S . -B build/ && cmake --build build/"
-alias cmake-release="cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Release -S . -B build/ && cmake --build build/"
-
-
 PS1='[\u@\h \W]\$ '
 
 # neovim for man pages
@@ -45,11 +40,15 @@ export MANPAGER='nvim +Man!'
 # Set used terminal
 export TERMINAL="st"
 
+# Set the root dir for android sdk
+export "ANDROID_SDK_ROOT"="$HOME/android-sdk"
+
 # Add local scripts and programs to PATH
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/scripts"
 export PATH="$PATH:$HOME/scripts/dwmblocks"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/cmdline-tools/tools:$ANDROID_SDK_ROOT/cmdline-tools/tools/bin"
 
 # Set dirs for my diary and planner shells
 export DIARY_DIR="$HOME/notes/diary"
