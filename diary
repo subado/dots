@@ -1,3 +1,0 @@
-#!/bin/sh
-
-notes.sh diary $1
