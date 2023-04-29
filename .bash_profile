@@ -2,5 +2,7 @@
 
 # Get the aliases and functions
 [ -f $HOME/.bashrc ] && . $HOME/.bashrc
-LC_TIME="en_GB.utf8"
-export LC_TIME
+
+export LC_TIME="en_GB.utf8"
+export SVDIR="~/service"
+export SSH_AUTH_SOCK="${TMPDIR:-/tmp}/ssh-agent.socket"
