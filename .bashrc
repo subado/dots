@@ -30,6 +30,9 @@ alias reboot='sudo reboot'
 alias shutdown='sudo shutdown'
 alias config='/usr/bin/git --git-dir=/home/subado/.cfg/.git/ --work-tree=/home/subado'
 
+# Alias for local services
+alias sv='SVDIR=~/.config/sv sv'
+
 PS1='[\u@\h \W]\$ '
 
 # neovim for man pages
