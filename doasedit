@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+
+. utils.sh
+
+usage() {
+	cat <<-_EOF
+		usage: ${BOLD}$PROGRAM${NORMAL} ${ITALIC}file${NORMAL}
+		Open ${ITALIC}file${NORMAL} with current user \$EDITOR (${ITALIC}$EDITOR${NORMAL})
+	_EOF
+}
+
+[ $# -gt 1 ] && usage && exit 1
+[ "$1" = '--help' -o "$1" = '-h' ] && usage && exit 0
+[ "$1" = "" ] && die 'missing file operand'
+[ "$(id -u)" -eq 0 ] && die 'cannot be run as root'
+[ -w "$1" ] && die 'editing writable file is not permitted'
+
+file=$(realpath "$1")
+
+# Exit on error. Unset variables is error
+set -eu
+
+tempdir=$(mktemp -d)
+tempfile="$tempdir"/${file##*/}
+
+# Copy original file with preserved attributes
+cp --preserve=all "$file" "$tempfile"
+
+"$EDITOR" "$tempfile"
+
+if ! cmp -s "$file" "$tempfile"; then
+	# sh is need to use with script without persist and single doas prompt
+	doas sh -c "
+  mv $tempfile $file
+  chown root:root $file"
+	rm -rf "$tempdir"
+fi
