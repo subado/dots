@@ -2,36 +2,78 @@
 
 . utils.sh
 
+[ "$DEBUG" ] && set -x
+[ "$(id -u)" -eq 0 ] && die 'cannot be run as root'
+
 usage() {
 	cat <<-_EOF
-		usage: ${BOLD}$PROGRAM${NORMAL} ${ITALIC}file${NORMAL}
+		usage: ${BOLD}$PROGRAM${NORMAL} [ ${ITALIC}DOAS OPTIONS${NORMAL} ] ${ITALIC}file${NORMAL}
 		Open ${ITALIC}file${NORMAL} with current user \$EDITOR (${ITALIC}$EDITOR${NORMAL})
+		${ITALIC}DOAS OPTIONS${NORMAL} is options passed to doas(1)
 	_EOF
 }
 
-[ $# -gt 1 ] && usage && exit 1
-[ "$1" = '--help' -o "$1" = '-h' ] && usage && exit 0
-[ "$1" = "" ] && die 'missing file operand'
-[ "$(id -u)" -eq 0 ] && die 'cannot be run as root'
-[ -w "$1" ] && die 'editing writable file is not permitted'
+eval set -- "$("$GETOPT" -o hLnsC:u: -name -l help -n "$PROGRAM" -- "$@")"
+
+add_opt() {
+	opts="${opts}$1 "
+}
+while true; do
+	case $1 in
+	-h | --help)
+		shift
+		usage && exit 0
+		;;
+	--)
+		shift
+		break
+		;;
+	-C | -u)
+		add_opt "$@"
+		shift
+		add_opt "$@"
+		shift
+		;;
+	*)
+		add_opt "$@"
+		shift
+		;;
+	esac
+done
+
+[ $# -lt 1 ] && usage && exit 1
 
 file=$(realpath "$1")
+[ "$file" = "" ] && die 'missing file operand'
 
-# Exit on error. Unset variables is error
-set -eu
+# Save file dir if file not exist
+[ ! -f "$file" ] && dir="$(dirname -- "$file")"
+
+[ -w "$file" -o -w "$dir" ] &&
+	die 'editing writable file is not permitted'
 
 tempdir=$(mktemp -d)
 tempfile="$tempdir"/${file##*/}
 
-# Copy original file with preserved attributes
-cp --preserve=all "$file" "$tempfile"
+if [ "$dir" ]; then
+	# Save dir ownership
+	ownership="$(stat -c '%u:%g' "$dir")"
+else
+	# Save file ownership
+	ownership="$(stat -c '%u:%g' "$file")"
+	# Copy original file with preserved attributes
+	cp --preserve=all "$file" "$tempfile"
+fi
 
 "$EDITOR" "$tempfile"
 
-if ! cmp -s "$file" "$tempfile"; then
-	# sh is need to use with script without persist and single doas prompt
-	doas sh -c "
+if [ -f "$tempfile" ] && ! cmp -s "$file" "$tempfile"; then
+	# sh is need for
+	# 1) use script without persist in doas.conf
+	# 2) single doas authentication
+	eval doas "$opts \
+  sh -c '
   mv $tempfile $file
-  chown root:root $file"
+	chown $ownership $file'"
 	rm -rf "$tempdir"
 fi
