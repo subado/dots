@@ -27,9 +27,16 @@ while true; do
 		shift
 		break
 		;;
-	-C | -u)
+	-C)
 		add_opt "$@"
 		shift
+		add_opt "$@"
+		shift
+		;;
+	-u)
+		add_opt "$@"
+		shift
+		user="$1"
 		add_opt "$@"
 		shift
 		;;
@@ -56,13 +63,15 @@ tempfile="$tempdir"/${file##*/}
 
 if [ "$dir" ]; then
 	# Save dir ownership
-	ownership="$(stat -c '%u:%g' "$dir")"
+	[ "$user" = "" ] && ownership="$(stat -c '%u:%g' "$dir")"
 else
 	# Save file ownership
-	ownership="$(stat -c '%u:%g' "$file")"
+	[ "$user" = "" ] && ownership="$(stat -c '%u:%g' "$file")"
 	# Copy original file with preserved attributes
 	cp --preserve=all "$file" "$tempfile"
 fi
+
+[ "$user" ] && ownership="$user:$user"
 
 "$EDITOR" "$tempfile"
 
