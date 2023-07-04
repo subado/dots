@@ -1,11 +1,10 @@
 #!/bin/bash
 
 case $1 in
-	up)			pamixer --allow-boost -i 5 ;;
-	down)		pamixer --allow-boost -d 5 ;;
-	mute)		pamixer -t ;;
+up) pamixer --allow-boost -i 5 ;;
+down) pamixer --allow-boost -d 5 ;;
+mute) pamixer -t ;;
 esac
-
 
 vol="$(pamixer --get-volume)"
 
@@ -21,6 +20,5 @@ else
 	fi
 fi
 
-
-notify-send -t 1000 -r 6 -h int:value:$vol "$icon"
+notify-send -t 1000 -r 6 -h int:value:"$vol" "$icon"
 pkill -RTMIN+6 dwmblocks
