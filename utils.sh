@@ -7,6 +7,8 @@ BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 ITALIC=$(tput sitm)
 
+[ "$DEBUG" ] && set -x
+
 die() {
 	echo "$PROGRAM: $@" >&2
 	echo "Try '$PROGRAM --help' for more information."
@@ -27,5 +29,3 @@ contains() {
 	done
 	return 1
 }
-
-[ "$DEBUG" ] && set -x
