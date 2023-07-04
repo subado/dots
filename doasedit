@@ -2,7 +2,6 @@
 
 . utils.sh
 
-[ "$DEBUG" ] && set -x
 [ "$(id -u)" -eq 0 ] && die 'cannot be run as root'
 
 usage() {
