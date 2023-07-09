@@ -1,102 +1,70 @@
 #!/usr/bin/env bash
 
-bold=$(tput bold)
-normal=$(tput sgr0)
+source utils.sh
 
-die() {
-	echo "$@" >&2
-	exit 1
+usage() {
+	cat <<-_EOF
+		usage: ${BOLD}$PROGRAM${NORMAL} [-f] ${ITALIC}CONTENT-DIR${NORMAL} [${ITALIC}content${NORMAL}...]
+
+		  ${BOLD}-f, --force${NORMAL}
+		      Force gegenerate archetypes for all files.
+		      Be careful with if your file starts with ${BOLD}---${NORMAL} and it isn't archetypes,
+		      because your ${BOLD}file may be purge!${NORMAL}
+	_EOF
 }
 
-check_dir() {
-	[ ! -d "$1" ] && die "dir doesn't exist: $1"
-}
+eval set -- "$(getopt -o hf -l help,force -n "$PROGRAM" -- "$@")"
 
-add_arcetypes() {
-	if [ $# -lt 4 ] || [ $# -gt 5 ]; then
-		die "Usage: add-arcetypes.sh [-fR] -c <CONTENT-DIR> -t <TMP-DIR>
+while true; do
+	case "$1" in
+	-h | --help)
+		usage && exit 0
+		;;
+	-f | --force)
+		force=1
+		shift
+		;;
+	--)
+		shift
+		break
+		;;
+	esac
+done
 
-  -c
-    Specify directory containing content
+[ "$1" = "" ] && die 'missing content directory operand'
+[ -d "$1" ] || die "doesn't exist: $1"
+CONTENT_DIR=$(realpath "$1")
+shift
 
-  -t
-    Specify directory for temporary files
+while true; do
+	content=$1
+	[ "$content" ] && shift
 
-  -f
-    Allow to use already exist dir as a tmp directory
+	[ -f "${content:="$CONTENT_DIR"}" ] || [ -d "$content" ] || die "doesn't exist: $content"
 
-  -R
-    Regenerate archetypes of all files.
-    Be careful with if your file starts with ${bold}---${normal} and it isn't archetypes,
-    because your ${bold}file may be purge!${normal}"
-	fi
+	while IFS= read -r file; do
+		IFS= read -r line <"$file"
 
-	while [ $# -ne 0 ]; do
-		case "$1" in
-		-c)
-			shift
-			local content_dir="$1"
-			shift
-			;;
-		-t)
-			shift
-			local tmp_dir="$1"
-			shift
-			;;
-		-f)
-			local force=true
-			shift
-			;;
-		-R)
-			local regen=true
-			shift
-			;;
-		esac
-	done
+		[ "$line" = '---' ] &&
+			if [ "$force" ]; then
+				sed -i '1d' "$file"
+				while IFS= read -r line; do
+					sed -i '1d' "$file"
+					[ "$line" = '---' ] && break
+				done <"$file"
+			else
+				continue
+			fi
 
-	check_dir "$content_dir"
-	[ ! "$force"] && [ -d "$tmp_dir" ] && die "dir already exist: $tmp_dir"
+		temp="$(mktemp)"
+		mv "$file" "$temp"
 
-	mkdir -p "$tmp_dir"
+		hugo new "${file##"$CONTENT_DIR/"}" || eval "mv $temp $file; exit 1"
+		cat "$temp" >>"$file"
 
-	IFS=$'\n' read -d '' -a contents < <(find "$content_dir" -type f)
+		rm "$temp"
 
-	for i in "${contents[@]}"; do
-		local hasArchetypes=false
+	done < <(find "$content" -type f)
 
-		if [ "$(awk "NR==1" "$i")" == "---" ]; then
-			hasArchetypes=true
-		fi
-
-		if [ "$regen" ]; then
-
-			while [ "$hasArchetypes" = true ]; do
-				sed -i '1d' "$i"
-				if [ "$(awk "NR==1" "$i")" == "---" ]; then
-					sed -i '1d' "$i"
-					hasArchetypes=false
-				fi
-			done
-
-		else
-			[ "$hasArchetypes" = true ] && continue
-		fi
-		mv "$i" "$tmp_dir"
-		local tmp_file="$tmp_dir/$(basename "$i")"
-
-		local new_file="${i#$content_dir}"
-		while [ "${new_file:0:1}" == "/" ]; do
-			new_file=${new_file:1}
-		done
-
-		hugo new "$new_file"
-
-		cat "$tmp_file" >>"$content_dir/$new_file"
-
-		rm "$tmp_file"
-	done
-
-	[ ! "$force"] && rmdir "$tmp_dir"
-}
-
-add_arcetypes "$@"
+	[ $# -eq 0 ] && break
+done
