@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 PROGRAM="${0##*/}"
 GETOPT="getopt"
@@ -10,20 +10,16 @@ ITALIC=$(tput sitm)
 [ "$DEBUG" ] && set -x
 
 die() {
-	echo "$PROGRAM: $@" >&2
+	echo "$PROGRAM: $*"
 	echo "Try '$PROGRAM --help' for more information."
 	exit 1
-}
-
-check_dir() {
-	[ ! -d "$1" ] && die "dir doesn't exist: $1"
 }
 
 contains() {
 	local value="$1"
 	shift
 	for i in "$@"; do
-		if [ "$i" == "$value" ]; then
+		if [ "$i" = "$value" ]; then
 			return 0
 		fi
 	done
