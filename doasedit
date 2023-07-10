@@ -6,7 +6,7 @@
 
 usage() {
 	cat <<-_EOF
-		usage: ${BOLD}$PROGRAM${NORMAL} [ ${ITALIC}DOAS OPTIONS${NORMAL} ] ${ITALIC}file${NORMAL}
+		usage: ${BOLD}$PROGRAM${NORMAL} [ DOAS OPTIONS ] ${ITALIC}file${NORMAL}
 		Open ${ITALIC}file${NORMAL} with current user \$EDITOR (${ITALIC}$EDITOR${NORMAL})
 		${ITALIC}DOAS OPTIONS${NORMAL} is options passed to doas(1)
 	_EOF
@@ -23,10 +23,6 @@ while true; do
 		shift
 		usage && exit 0
 		;;
-	--)
-		shift
-		break
-		;;
 	-C)
 		add_opt "$@"
 		shift
@@ -40,6 +36,10 @@ while true; do
 		add_opt "$@"
 		shift
 		;;
+	--)
+		shift
+		break
+		;;
 	*)
 		add_opt "$@"
 		shift
@@ -50,12 +50,13 @@ done
 [ $# -lt 1 ] && usage && exit 1
 
 file=$(realpath "$1")
+shift
 [ "$file" = "" ] && die 'missing file operand'
 
 # Save file dir if file not exist
 [ ! -f "$file" ] && dir="$(dirname -- "$file")"
 
-[ -w "$file" -o -w "$dir" ] &&
+[ -w "$file" ] || [ -w "$dir" ] &&
 	die 'editing writable file is not permitted'
 
 tempdir=$(mktemp -d)
