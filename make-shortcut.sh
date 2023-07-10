@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-ln -sf $(readlink -f $1) $HOME/.local/bin/$1
+BIN="$1"
+NAME="$2"
+
+ln -sf "$(realpath "$BIN")" "$HOME/.local/bin/${NAME:-"${BIN##*/}"}"
