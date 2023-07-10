@@ -2,11 +2,16 @@
 
 PREFIX="${DIARY_DIR:-$HOME/.diary}"
 
-write()
-{
+write() {
 	case "$1" in
-		-d|--date) local path="$(date -d "$2" +'%Y/%m/%d')"; shift 2 ;;
-		*) local path="${1%/}"; shift ;;
+	-d | --date)
+		local path="$(date -d "$2" +'%Y/%m/%d')"
+		shift 2
+		;;
+	*)
+		local path="${1%/}"
+		shift
+		;;
 	esac
 
 	local file="$PREFIX/$path.md"
@@ -14,11 +19,10 @@ write()
 	local working_dir="$PREFIX/$(dirname "$path")"
 	mkdir -p -v "$working_dir"
 
-	$EDITOR "+cd $working_dir" $file
+	"$EDITOR" "+cd $working_dir" "$file"
 }
 
-show()
-{
+show() {
 	local path="${1%/}"
 	local file="$PREFIX/$path.md"
 
@@ -27,7 +31,12 @@ show()
 }
 
 case "$1" in
-	write) shift;			write "$@" ;;
-	show) shift;			show "$@" ;;
-	*)
-esac
+write)
+	shift
+	write "$@"
+	;;
+show)
+	shift
+	show "$@"
+	;;
+*) ;; esac
