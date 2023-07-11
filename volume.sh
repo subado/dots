@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 case $1 in
 up) pamixer --allow-boost -i 5 ;;
@@ -8,12 +8,12 @@ esac
 
 vol="$(pamixer --get-volume)"
 
-if [[ $(pamixer --get-mute) == true ]]; then
+if [ "$(pamixer --get-mute)" = 'true' ]; then
 	icon="🔇"
 else
-	if [[ "$vol" -gt "70" ]]; then
+	if [ "$vol" -gt 70 ]; then
 		icon="🔊"
-	elif [[ "$vol" -gt "30" ]]; then
+	elif [ "$vol" -gt 30 ]; then
 		icon="🔉"
 	else
 		icon="🔈"
