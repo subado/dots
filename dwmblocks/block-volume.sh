@@ -1,20 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 case $BUTTON in
-	1) pamixer -t ;;
-	2) pavucontrol & ;;
+1) pamixer -t ;;
+2) pavucontrol & ;;
 esac
 
-if [[ $(pamixer --get-mute) == true ]]; then
+if [ "$(pamixer --get-mute)" = 'true' ]; then
 	echo "🔇"
 	exit
 fi
 
 vol="$(pamixer --get-volume)"
 
-if [[ "$vol" -gt "70" ]]; then
+if [ "$vol" -gt 70 ]; then
 	icon="🔊"
-elif [[ "$vol" -gt "30" ]]; then
+elif [ "$vol" -gt 30 ]; then
 	icon="🔉"
 else
 	icon="🔈"

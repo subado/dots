@@ -1,25 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
+sudo xbps-install -S >/dev/null 2>&1
 updates=$(xbps-install -un | awk '{print $1}')
 
 case $BUTTON in
-	1)
-		xbps-install -S >/dev/null 2>&1 &
-		notify-send "Synchronize remote repository index files"
-		;;
-	2) $TERMINAL -e sudo xbps-install -Suy & ;;
-	3)
-		if [[ $updates != "" ]]; then
-			notify-send "$updates"
-		fi
-		;;
+1)
+	message="$updates"
+	if [ "$message" = "" ]; then
+		message="System is up to date"
+	fi
+	notify-send "$message"
+	;;
+2)
+	"$TERMINAL" -e sudo xbps-install -Suv &
+	;;
 esac
+
 icon="📦"
 
-if [[ $updates != "" ]]; then
-	updatesNum="$(echo "$updates" | wc -l)"
-else
-	updatesNum=0
-fi
-
-echo "$icon$updatesNum"
+echo "$icon$(printf '%s' "$updates" | wc -l)"

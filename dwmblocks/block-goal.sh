@@ -3,6 +3,6 @@
 case $BUTTON in
 esac
 
-goal="Нахуй лишнюю информацию💀"
+goal="You can do✊ anything! Be strong🫂 and kind"
 
 echo "$goal"
