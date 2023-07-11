@@ -3,6 +3,4 @@
 case $BUTTON in
 esac
 
-goal="You can do✊ anything! Be strong🫂 and kind"
-
-echo "$goal"
+cat "${GOAL_FILE:-goal}"
