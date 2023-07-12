@@ -1,0 +1,19 @@
+! vscode light .Xresources
+#define FOREGROUND #000000
+#define BACKGROUND #FFFFFF
+#define COLOR0     #FFFFFF
+#define COLOR1     #C72E0F
+#define COLOR2     #008000
+#define COLOR3     #795E25
+#define COLOR4     #007ACC
+#define COLOR5     #AF00DB
+#define COLOR6     #56B6C2
+#define COLOR7     #000000
+#define COLOR8     #808080
+#define COLOR9     #C72E0F
+#define COLOR10    #008000
+#define COLOR11    #795E25
+#define COLOR12    #007ACC
+#define COLOR13    #AF00DB
+#define COLOR14    #56B6C2
+#define COLOR15    #000000
