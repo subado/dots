@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+man() {
+	LESS_TERMCAP_md="$(
+		tput bold
+		tput setaf 5
+	)" \
+	LESS_TERMCAP_me="$(tput sgr0)" \
+	LESS_TERMCAP_so="$(
+		tput bold
+		tput setaf 7
+		tput setab 4
+	)" \
+	LESS_TERMCAP_se="$(
+		tput rmso
+		tput sgr0
+	)" \
+	LESS_TERMCAP_us="$(
+		tput bold
+		tput setaf 2
+	)" \
+	LESS_TERMCAP_ue="$(
+		tput rmul
+		tput sgr0
+	)" \
+		command man "$@"
+}

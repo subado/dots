@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# aliases
+
+# Compatibility
+alias sudo='doas'
+alias vim='nvim'
+
+# Colorize
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+
+# For use feh like image viewer
+alias feh='feh --scale-down'
+
+# Add sudo to commands
+alias halt='sudo halt'
+alias poweroff='sudo poweroff'
+alias reboot='sudo reboot'
+alias shutdown='sudo shutdown'
+alias zzz='sudo zzz'
+
+# Setup git repo for dotfiles
+alias config="git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME"
+
+# Alias for local services
+alias sv='SVDIR=~/.config/sv sv'
+
+# Shortcuts
+alias ll='ls -lah'
+# xbps
+alias xu='sudo xbps-install xbps && sudo xbps-install -Suv'
+alias xin='sudo xbps-install -S'
+alias xr='sudo xbps-remove -Rcon'
+alias xl='xbps-query -l'
+alias xf='xl | grep'
+alias xs='xbps-query -Rs'
+alias xd='xbps-query -x'
+alias clrk='sudo vkpurge rm all && sudo rm -rf /var/cache/xbps/*'

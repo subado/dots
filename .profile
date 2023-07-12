@@ -1,0 +1,1 @@
+/home/subado/.config/shell/profile

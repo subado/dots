@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+h() {
+
+	help -m "$@" | (
+		COLOR="$(tput setaf 5)"
+		sed -E "s|(^[A-Z, ]+\$)|${COLOR}\1|"
+	) | less
+}

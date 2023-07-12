@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+eval "$(starship init bash)" # Enable starship
+
+complete -c doas # Doas completion commands
+
+load() {
+	[ -f "$1" ] && source "$1"
+	[ -d "$1" ] &&
+		while read -r alias; do
+			source "$alias"
+		done < <(find "$1" -type f)
+
+}
+load "$SHELL_CONFIG_HOME/aliases" # Load aliases
+load "$SHELL_CONFIG_HOME/funcs/"  # Load functions
+
+unset -f load # Delete load()
