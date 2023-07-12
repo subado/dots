@@ -1,1 +1,1 @@
-/home/subado/.config/shell/bashrc
+.config/shell/bashrc
