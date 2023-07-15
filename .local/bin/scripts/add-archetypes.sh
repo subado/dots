@@ -13,7 +13,7 @@ usage() {
 	_EOF
 }
 
-eval set -- "$(getopt -o hf -l help,force -n "$PROGRAM" -- "$@")"
+eval set -- "$("$GETOPT" -o hf -l help,force -n "$PROGRAM" -- "$@")"
 
 while true; do
 	case "$1" in
