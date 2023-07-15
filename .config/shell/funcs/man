@@ -16,7 +16,6 @@ man() {
 		tput sgr0
 	)" \
 	LESS_TERMCAP_us="$(
-		tput bold
 		tput setaf 2
 	)" \
 	LESS_TERMCAP_ue="$(
