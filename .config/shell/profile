@@ -46,10 +46,10 @@ export GOAL_FILE="$XDG_DATA_HOME/scripts/goal"
 export EMOJI_FILE="$XDG_DATA_HOME/scripts/emoji"
 
 # Program options
-export _JAVA_AWT_WM_NONREPARENTING=1     # Fix for Java applications in dwm
-export GTEST_COLOR=1                     # Google test framework output colorful
-export LESS='-F -I -R --incsearch'       # Set up less
-export LESSOPEN='| highlight -O ansi %s' # Syntax highlighting
+export _JAVA_AWT_WM_NONREPARENTING=1  # Fix for Java applications in dwm
+export GTEST_COLOR=1                  # Google test framework output colorful
+export LESS='-M -F -I -R --incsearch' # Set up less
+export LESSOPEN='| lesspipe.sh %s'    # Syntax highlighting
 
 # Add local scripts and programs to PATH
 add_path "$(find ~/.local/bin -type d ! -path '*/\.git*' -printf %p:)"
