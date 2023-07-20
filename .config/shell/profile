@@ -19,8 +19,6 @@ export INPUTRC="$SHELL_CONFIG_HOME/inputrc"
 # X11
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
 
-# 24h time
-export LC_TIME='en_GB.utf8'
 # Default programs
 export EDITOR='nvim'
 export TERMINAL='st'
@@ -32,7 +30,6 @@ export SSH_AUTH_SOCK="${TMPDIR:-/tmp}/ssh-agent.socket" # Required to use ssh-ag
 
 # Clean up ~/
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
-export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
