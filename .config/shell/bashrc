@@ -12,7 +12,7 @@ load() {
 		done < <(find "$1" -type f)
 
 }
-load "$SHELL_CONFIG_HOME/aliases" # Load aliases
-load "$SHELL_CONFIG_HOME/funcs/"  # Load functions
+load "${XDG_CONFIG_HOME:-~/.config}/shell/aliases" # Load aliases
+load "${XDG_CONFIG_HOME:-~/.config}/shell/funcs/"  # Load functions
 
 unset -f load # Delete load()
