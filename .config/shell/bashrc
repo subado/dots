@@ -7,8 +7,8 @@ complete -c doas # Doas completion commands
 load() {
 	[ -f "$1" ] && source "$1"
 	[ -d "$1" ] &&
-		while read -r alias; do
-			source "$alias"
+		while read -r i; do
+			source "$i"
 		done < <(find "$1" -type f)
 
 }
