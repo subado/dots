@@ -1,9 +1,10 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 # .profile
 
 add_path() {
 	export PATH="$PATH:${1%:}"
 }
+
 
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -13,6 +14,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # shell
 export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
+[ -r "$HOME/.bashrc" ] && source "$HOME/.bashrc"
 
 # X11
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
