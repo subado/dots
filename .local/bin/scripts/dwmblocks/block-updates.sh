@@ -5,11 +5,7 @@ updates=$(xbps-install -un | awk '{print $1}')
 
 case $BUTTON in
 1)
-	message="$updates"
-	if [ "$message" = "" ]; then
-		message="System is up to date"
-	fi
-	notify-send "$message"
+	notify-send "${updates:-System is up to date}"
 	;;
 2)
 	"$TERMINAL" -e sudo xbps-install -Suv &
