@@ -17,6 +17,6 @@ case $BUTTON in
 esac
 
 icon="📦"
-num=$(printf '%s' "$updates" | wc -l)
-[ "$updates" ] && num=$((num + 1))
+num=0
+[ "$updates" ] && num=$(echo "$updates" | wc -l)
 echo "$icon$num"
