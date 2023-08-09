@@ -12,7 +12,9 @@ load() {
 		done < <(find "$1" -type f)
 
 }
-load "${XDG_CONFIG_HOME:-~/.config}/shell/aliases" # Load aliases
-load "${XDG_CONFIG_HOME:-~/.config}/shell/funcs/"  # Load functions
+load "${XDG_CONFIG_HOME:-~/.config}/shell/load/"  # Load functions
 
 unset -f load # Delete load()
+
+# Fix ls colors
+eval "$(dircolors)"
