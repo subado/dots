@@ -4,7 +4,7 @@ source utils.sh
 
 usage() {
 	cat <<-_EOF
-		usage: ${BOLD}$PROGRAM${NORMAL} [-f] ${ITALIC}CONTENT-DIR${NORMAL} [${ITALIC}content${NORMAL}...]
+		usage: ${BOLD}$PROGRAM${NORMAL} [-f] ${ITALIC}CONTENT_DIR${NORMAL} [${ITALIC}content${NORMAL}...]
 
 		  ${BOLD}-f, --force${NORMAL}
 		      Force gegenerate archetypes for all files.
