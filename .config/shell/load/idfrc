@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ESP_PATH="$HOME/espressif"
+ESP_PATH="$HOME/esp"
 
 if [ -d "$ESP_PATH/esp-idf" ] ; then
 	IDF_PATH="$ESP_PATH/esp-idf"
