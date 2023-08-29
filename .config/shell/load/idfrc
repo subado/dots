@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-ESP_PATH="$HOME/esp"
+idfrc() {
+	ESP_PATH="$HOME/esp"
 
-if [ -d "$ESP_PATH/esp-idf" ] ; then
-	IDF_PATH="$ESP_PATH/esp-idf"
-	export IDF_PATH
-	if [ -f "$IDF_PATH/export.sh" ] ; then
-		alias idfexp="\. \$IDF_PATH/export.sh"
-	fi
+	if [ -d "$ESP_PATH/esp-idf" ]; then
+		IDF_PATH="$ESP_PATH/esp-idf"
+		export IDF_PATH
+		if [ -f "$IDF_PATH/export.sh" ]; then
+			alias idfexp="\. \$IDF_PATH/export.sh"
+		fi
 
-	if [ -f "$IDF_PATH/tools/idf_tools.py" ] ; then
-		eval "$("$IDF_PATH"/tools/idf_tools.py export)"
+		if [ -f "$IDF_PATH/tools/idf_tools.py" ]; then
+			eval "$("$IDF_PATH"/tools/idf_tools.py export)"
+		fi
 	fi
-fi
+}
