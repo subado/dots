@@ -4,9 +4,7 @@ CONFIG_HOME="${XDG_CONFIG_HOME:-~/.config}/x11"
 
 resources="$CONFIG_HOME/xresources"
 
-while read -r command; do
-	eval "$command"
-done <"$CONFIG_HOME/autostart"
+source "$CONFIG_HOME/autostart"
 
 [ -f "$resources" ] && xrdb -merge "$resources"
 

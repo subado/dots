@@ -1,3 +1,5 @@
-xkeyboard-setup
+#!/usr/bin/env sh
+
+xkeyboard-setup.sh
 setbg
 xcompmgr &
