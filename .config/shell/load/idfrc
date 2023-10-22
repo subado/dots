@@ -2,9 +2,10 @@
 
 idfrc() {
 	ESP_PATH="$HOME/esp"
+	name="$1"
 
-	if [ -d "$ESP_PATH/esp-idf" ]; then
-		IDF_PATH="$ESP_PATH/esp-idf"
+	if [ -d "$ESP_PATH/$name" ]; then
+		IDF_PATH="$ESP_PATH/$name"
 		export IDF_PATH
 		if [ -f "$IDF_PATH/export.sh" ]; then
 			alias idfexp="\. \$IDF_PATH/export.sh"
@@ -14,4 +15,12 @@ idfrc() {
 			eval "$("$IDF_PATH"/tools/idf_tools.py export)"
 		fi
 	fi
+}
+
+32idfrc() {
+	idfrc "esp-idf"
+}
+
+8266idfrc() {
+	idfrc "ESP8266_RTOS_SKD"
 }
