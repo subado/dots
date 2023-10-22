@@ -3,3 +3,5 @@
 xkeyboard-setup.sh
 setbg
 xcompmgr &
+laptop_keyboard=$(xinput list | grep 'AT Translated')
+[ "$laptop_keyboard" ] && xinput float "$(awk '{print $7}' <<<"$laptop_keyboard" | awk -F '=' '{print $2}')"
