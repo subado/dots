@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
-lang='ru'
+lang='en:ru'
 trslt.sh "$lang"
 
 clip=$(xclip -o -selection clipboard)
 if [ "$clip" ]; then
-	buf=$(echo -n "$clip" | awk '{print tolower($0)}' | tr '\n' ' ' | trans -show-languages n -no-warn -show-translation-phonetics n -show-translation n :"$lang")
+	buf=$(echo -n "$clip" | awk '{print tolower($0)}' | tr '\n' ' ' | trans -show-languages n -no-warn -show-translation-phonetics n -show-translation n "$lang")
 	origin="${buf%%$'\n'*}"
 	card="$FLASHCARDS_DIR/english/$origin.md"
 
