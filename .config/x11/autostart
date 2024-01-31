@@ -10,11 +10,12 @@ disable_device() {
   }' <<<"$device" | awk -F '=' '{print $2}')"
 }
 
-xkeyboard-setup.sh
+set-resolution
 setbg
 xcompmgr &
 
 disable_device 'AT Translated'
 disable_device 'AlpsPS/2 ALPS GlidePoint'
-
 unset -f disable_device
+
+xkeyboard-setup.sh
