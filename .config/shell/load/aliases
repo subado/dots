@@ -21,10 +21,7 @@ alias shutdown='sudo shutdown'
 alias zzz='sudo zzz'
 
 # Setup git repo for dotfiles
-alias cfg="git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME"
-
-# Alias for local services
-alias sv='SVDIR=~/.config/sv sv'
+alias cfg="git --git-dir=\$HOME/.cfg/.git/ --work-tree=\$HOME"
 
 # Shortcuts
 alias ll='ls -lah'

@@ -26,6 +26,7 @@ export PAGER='less'
 # Program settings
 export ANDROID_SDK_ROOT="$HOME/android"                         # Set the root dir for android sdk
 export SSH_AUTH_SOCK="${TMPDIR:-/tmp}/ssh-agent.${USER}.socket" # Required to use ssh-agent service
+export SVDIR="$XDG_DATA_HOME/service"
 
 # Clean up ~/
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
@@ -41,7 +42,7 @@ export DIARY_DIR="$HOME/notes/diary"
 export FLASHCARDS_DIR="$XDG_DATA_HOME/flashcards/"
 export GOAL_FILE="$XDG_DATA_HOME/scripts/goal"
 export EMOJI_FILE="$XDG_DATA_HOME/scripts/emoji"
-export VOLUME_MIXER="pulsemixer"
+export VOLUME_MIXER="pamixer"
 
 # Program options
 export _JAVA_AWT_WM_NONREPARENTING=1  # Fix for Java applications in dwm
