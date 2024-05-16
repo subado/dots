@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if command -v xbps-install >/dev/null 2>&1; then
-	sudo xbps-install -S >/dev/null 2>&1
+	doas xbps-install -S >/dev/null 2>&1
 	updates=$(xbps-install -un | awk '{print $1}')
 
 	case $BUTTON in
