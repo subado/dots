@@ -1,4 +1,22 @@
 [submodule ".config/nvim"]
   path = .config/nvim
-  url = https://github.com/subado/nvim
+  url = git@github.com:subado/nvim
   branch = master
+[submodule ".local/share/src/dwm-flexipatch"]
+	path = .local/share/src/dwm-flexipatch
+	url = git@github.com:subado/dwm-flexipatch
+[submodule ".local/share/src/st-flexipatch"]
+	path = .local/share/src/st-flexipatch
+	url = git@github.com:subado/st-flexipatch
+[submodule ".local/share/src/xkblayout-state"]
+	path = .local/share/src/xkblayout-state
+	url = git@github.com:nonpop/xkblayout-state
+[submodule ".local/share/src/dmenu-flexipatch"]
+	path = .local/share/src/dmenu-flexipatch
+	url = git@github.com:subado/dmenu-flexipatch
+[submodule ".local/share/src/dwmblocks"]
+	path = .local/share/src/dwmblocks
+	url = git@github.com:subado/dwmblocks
+[submodule ".local/share/src/pinentry-dmenu"]
+	path = .local/share/src/pinentry-dmenu
+	url = git@github.com:ritze/pinentry-dmenu.git
