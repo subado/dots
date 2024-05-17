@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-disable='LVDS-1'
+disable='LVDS1'
 mode='1368x768_60.00'
-output='VGA-1'
+output='VGA1'
 xrandr --output "$disable" --off
 xrandr --newmode "$mode"  85.86  1368 1440 1584 1800  768 769 772 795  -HSync +Vsync
 xrandr --addmode "$output" "$mode"
