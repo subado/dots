@@ -20,3 +20,6 @@
 [submodule ".local/share/src/pinentry-dmenu"]
 	path = .local/share/src/pinentry-dmenu
 	url = git@github.com:ritze/pinentry-dmenu.git
+[submodule "books"]
+	path = books
+	url = git@github.com:subado/books
