@@ -43,6 +43,7 @@ export FLASHCARDS_DIR="$XDG_DATA_HOME/flashcards/"
 export GOAL_FILE="$XDG_DATA_HOME/scripts/goal"
 export EMOJI_FILE="$XDG_DATA_HOME/scripts/emoji"
 export VOLUME_MIXER="pamixer"
+export WIREGUARD_INTERFACE='wg0'
 
 # Program options
 export _JAVA_AWT_WM_NONREPARENTING=1  # Fix for Java applications in dwm
