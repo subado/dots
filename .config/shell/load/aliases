@@ -25,6 +25,8 @@ alias cfg="git --git-dir=\$HOME/.cfg/.git/ --work-tree=\$HOME"
 
 # Shortcuts
 alias ll='ls -lah'
+alias tl='tasklite'
+
 # xbps
 alias xu='sudo xbps-install xbps && sudo xbps-install -Suv'
 alias xin='sudo xbps-install -S'

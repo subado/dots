@@ -17,8 +17,11 @@
 # unset -f disable_device
 
 #set-resolution
-setbg
-xcompmgr &
+# setbg
+# picom &
+# conky &
+# pipewire &
+# unclutter -idle 2 &
 
 #disable_device 'AT Translated'
 #disable_device 'AlpsPS/2 ALPS GlidePoint'

@@ -8,9 +8,11 @@ resources="$CONFIG_HOME/xresources"
 
 [ -f "$resources" ] && xrdb -merge "$resources"
 
-if [ "$(command -v dwm)" ]; then
+if [ "$(command -v awesome)" ]; then
+	dbus-run-session awesome
+elif [ "$(command -v dwm)" ]; then
 	dwmblocks &
-	exec dwm
+	dbus-run-session dwm
 else
 	echo "Install a DE/WM"
 fi

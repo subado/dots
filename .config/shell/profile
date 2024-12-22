@@ -2,7 +2,7 @@
 # .profile
 
 add_path() {
-	export PATH="$PATH:${1%:}"
+	export PATH="${1%:}:$PATH"
 }
 
 # XDG
@@ -20,8 +20,9 @@ export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
 
 # Default programs
 export EDITOR='nvim'
-export TERMINAL='st'
+export TERMINAL='alacritty'
 export PAGER='less'
+export BROWSER='firefox'
 
 # Program settings
 export ANDROID_SDK_ROOT="$HOME/android"                         # Set the root dir for android sdk
@@ -34,14 +35,13 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export GOPATH="$XDG_DATA_HOME/go"
-export TASKDATA="$XDG_DATA_HOME/task"
+export TASKLITE_PATH="$XDG_DATA_HOME/tasklite"
 
 # My scripts
 export BOOKS_DIR="$HOME/books"
 export DIARY_DIR="$HOME/notes/diary"
 export FLASHCARDS_DIR="$XDG_DATA_HOME/flashcards/"
 export GOAL_FILE="$XDG_DATA_HOME/scripts/goal"
-export EMOJI_FILE="$XDG_DATA_HOME/scripts/emoji"
 export VOLUME_MIXER="pamixer"
 export WIREGUARD_INTERFACE='wg0'
 
@@ -57,6 +57,9 @@ add_path "$XDG_DATA_HOME/nvim/mason/bin"
 add_path "$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/cmdline-tools/tools"
 add_path "$CARGO_HOME/bin"
 add_path "$GOPATH/bin"
+add_path "$HOME/.nix-profile/bin"
 
 #Automatic startx
 command -v startx >/dev/null 2>&1 && [ "$(tty)" = '/dev/tty1' ] && ! pidof -s 'Xorg' >/dev/null 2>&1 && exec startx "$XINITRC" || true
+
+[ -f "/home/subado/.ghcup/env" ] && . "/home/subado/.ghcup/env" # ghcup-env

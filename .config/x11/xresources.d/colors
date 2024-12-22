@@ -1,6 +1,11 @@
 *.foreground:  FOREGROUND
 *.background:  BACKGROUND
+
+#ifdef CURSORCOLOR
+*.cursorColor: CURSORCOLOR
+#else
 *.cursorColor: FOREGROUND
+#endif
 
 *.color0:  COLOR0
 *.color1:  COLOR1

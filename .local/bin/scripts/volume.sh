@@ -1,32 +1,22 @@
 #!/usr/bin/env sh
 
-mixer=$VOLUME_MIXER
-case $mixer in
-pamixer)
-	down="$mixer --allow-boost -d "
-	up="$mixer --allow-boost -i "
-	;;
-pulsemixer)
-	down="$mixer --change-volume -"
-	up="$mixer --change-volume +"
-	;;
-*)
-	notify-send -t 1000 -r 6 '$VOLUME_MIXER is not set!'
-	exit 1
-	;;
-esac
-
 step='5'
-is_muted=$("$mixer" --get-mute)
-vol=$("$mixer" --get-volume | awk '{print $1}')
+sink=$(pactl get-default-sink)
+is_muted=$(pactl get-sink-mute "$sink")
+vol=$(pactl get-sink-volume "$sink" | awk '{print $5}')
+vol="${vol%?}"
+up="pactl set-sink-volume $sink +$step%";
+down="pactl set-sink-volume $sink -$step%";
+mute="pactl set-sink-mute $sink toggle"
 
 case $1 in
-up) eval "$up$step" & ;;
-down) eval "$down$step" & ;;
-mute) "$mixer" --toggle-mute & ;;
+up) vol="$(($vol+$step))"; eval "$up" & ;;
+down) vol="$(($vol-$step))"; eval "$down" & ;;
+mute) eval "$mute" & ;;
 esac
 
-if [ "$is_muted" = 'true' ] || [ "$is_muted" = '1' ]; then
+if  { [ "$is_muted" = "Mute: yes" ] && [ "$1" != "mute" ]; } ||
+	  { [ "$is_muted" = "Mute: no" ] && [ "$1" = "mute" ] ;}; then
 	icon="🔇"
 else
 	if [ "$vol" -gt 70 ]; then
@@ -38,5 +28,8 @@ else
 	fi
 fi
 
-notify-send -t 1000 -r 6 -h int:value:"$vol" "$icon"
-pkill -RTMIN+6 dwmblocks
+vol="$((vol>0 ? vol : 0))"
+
+
+notify-send -t 1000 -r 6 "$icon $vol%"
+# pkill -RTMIN+6 dwmblocks

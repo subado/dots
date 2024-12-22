@@ -8,13 +8,18 @@ idfrc() {
 		IDF_PATH="$ESP_PATH/$name"
 		export IDF_PATH
 		if [ -f "$IDF_PATH/export.sh" ]; then
-			alias idfexp="\. \$IDF_PATH/export.sh"
+			exp="\. \$IDF_PATH/export.sh"
+			# shellcheck disable=2139
+			alias idfexp="$exp"
+			eval "$exp"
 		fi
 
 		if [ -f "$IDF_PATH/tools/idf_tools.py" ]; then
 			eval "$("$IDF_PATH"/tools/idf_tools.py export)"
 		fi
 	fi
+
+	export IDF_TOOLCHAIN=clang
 }
 
 32idfrc() {
